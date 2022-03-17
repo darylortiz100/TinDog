@@ -10,29 +10,21 @@ font-family: 'Ubuntu', sans-serif; */
     Extrabold = 800
     Black = 900
 */
-.body {
+/* Advanced CSS - Hierachical
+
+.container .title searches for title class inside container class
+.container.title searchs for both container class AND title class (same line usually)
+
+*/
+body {
+  text-align: center;
   font-family: "Montserrat", sans-serif;
 }
 
-h1 {
+/* Refractoring Example, after give more h3 specific classes for more control */
+h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 900;
-  /* Font size not just size */
-  font-size: 3.5rem;
-  line-height: 1.5;
-}
-
-h2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 800;
-  font-size: 3.0rem;
-  line-height: 1.5;
-}
-
-h3 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 800;
-  font-size: 1.5rem;
+  font-weight: 800
 }
 
 p {
@@ -62,47 +54,45 @@ p {
   font-weight: 300;
 }
 
+.container-fluid {
+  padding: 7% 15%;
+}
+
 .download-btn {
   margin: 5% 3% 5% 0;
-  text-align: center;
 }
 
-.container-fluid {
-  padding: 3% 15% 7%;
+/* Sections */
+.colored-section {
+  background-color: #ff4c68;
+  color: white;
 }
 
-/*
-.fa-circle-check {
-  color: #ef8172;
-}
-
-.fa-bullseye {
-  color: #ef8172;
-}
-
-.fa-heart {
-  color: #ef8172;
-}
-*/
-.fa-solid {
-  color: #ef8172;
-  padding: 10px 0px;
-  margin: 1rem 15px;
-}
-
-.fa-solid:hover {
-  color: #ff4c68;
+.white-section {
+  background-color: #fff;
 }
 
 #title {
-  text-align: center;
-  background-color: #ff4c68;
   font-family: "Montserrat", sans-serif;
-  color: white;
+}
+
+/* How to override previous container fluid by combining title and bootstrap class*/
+#title .container-fluid {
+  padding: 3% 15% 7%;
 }
 
 .iphone-container {
   position: relative;
+}
+
+.title-heading-container {
+  text-align: left;
+}
+
+.title-heading {
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1.5;
 }
 
 /* Title Image */
@@ -115,9 +105,23 @@ p {
 
 /* Features Section */
 #features {
-  padding: 7% 15%;
-  background-color: #fff;
   position: relative;
+}
+
+/* Font Awesome Icons */
+.feature-title {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.fa-solid {
+  color: #ef8172;
+  padding: 10px 0;
+  margin: 1rem 15px;
+}
+
+.fa-solid:hover {
+  color: #ff4c68;
 }
 
 .feature-box {
@@ -125,10 +129,14 @@ p {
 }
 
 /* Testimonials Sections */
-#testimonials {
-  text-align: center;
+/* ID more specific so it overrides the section class, class more specific than HTML element ie. h1,h2 etc.
+
+  IDs good for href but use sparingly
+
+  Avoid inline styles at all costs
+*/
+#testimonials, #press {
   background-color: #ef8172;
-  color: #fff;
 }
 
 .testimonial-image {
@@ -137,13 +145,7 @@ p {
   margin: 20px;
 }
 
-.carousel-item {
-  padding: 7% 15%;
-}
-
 #press {
-  background-color: #ef8172;
-  text-align: center;
   padding: 3%;
 }
 
@@ -155,7 +157,17 @@ p {
 /* Pricing Section */
 #pricing {
   padding: 100px;
-  text-align: center;
+}
+
+.big-heading {
+  font-weight: 800;
+  font-size: 3.0rem;
+  line-height: 1.5;
+}
+
+.dog-title {
+  font-weight: 800;
+  font-size: 1.5rem;
 }
 
 .pricing-column {
@@ -166,19 +178,11 @@ p {
   margin: 1.5rem;
 }
 
-#cta {
-  background-color: #ff4c68;
-  text-align: center;
-  padding: 7% 15%;
-}
-
 .social-media {
   margin: 20px;
 }
 
 #footer {
-  text-align: center;
-  background-color: #fff;
   padding: 100px;
 }
 
@@ -191,9 +195,19 @@ p {
   padding: 0;
 }
 
+.fa-envelope:hover {
+  color: #000;
+}
+
 /* Media Query Breakpoints */
 @media (max-width: 922px) {
   .title-img {
     position: static;
     transform: rotate(0);
+    text-align: center;
   }
+
+  #title {
+    text-align: center;
+  }
+}
